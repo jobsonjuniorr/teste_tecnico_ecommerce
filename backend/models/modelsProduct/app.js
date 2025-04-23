@@ -95,5 +95,20 @@ const updateProduct = async (id, nome, descricao, preco, estoque, categoria, ima
         connection.release();
     }
 };
+const getProductById = async (id) => {
+    const connection = await pool.getConnection();
+    try {
+        const [result] = await connection.execute(
+            "SELECT * FROM produtos WHERE id = ?",
+            [id]
+        );
+        return result.length ? result[0] : null;
+    } catch (error) {
+        throw error;
+    } finally {
+        connection.release();
+    }
+};
 
-export default {getProducts,deleteProduct, inserirProduto, updateProduct};
+
+export default {getProducts,deleteProduct, inserirProduto, updateProduct,getProductById};
