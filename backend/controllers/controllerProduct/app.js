@@ -39,7 +39,6 @@ export const criarProduto = (req, res) => {
       res.status(201).json({ message: 'Produto inserido com sucesso'});
 
    }catch(error){
-    console.error(error);
     res.status(500).json({ error: "Erro ao cadastrar o produto" });
    }
   };
@@ -60,7 +59,6 @@ export const criarProduto = (req, res) => {
             return res.status(404).json({ message: "Produto não encontrado ou nenhum campo atualizado" });
         }
     } catch (error) {
-        console.error(error);
         res.status(500).json({ error: "Erro ao atualizar o produto" });
     }
 };
